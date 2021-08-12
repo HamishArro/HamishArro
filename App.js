@@ -1,7 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import * as React from "react";
+import { ExpoWebGLRenderingContext, GLView } from "expo-gl";
+import { Renderer, THREE } from "expo-three";
 import { StyleSheet, Text, View } from "react-native";
-import { THREE } from "expo-three";
 
 export default function App() {
   return (
