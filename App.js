@@ -3,6 +3,8 @@ import * as React from "react";
 import { ExpoWebGLRenderingContext, GLView } from "expo-gl";
 import { Renderer, THREE } from "expo-three";
 import { StyleSheet, Text, View } from "react-native";
+import { Asset } from "expo-asset";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 
 export default function App() {
   return (
