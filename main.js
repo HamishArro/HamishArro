@@ -11,7 +11,7 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-const renderer = new THREE.WebGlRenderer({
+const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#bg"),
 });
 
@@ -21,4 +21,4 @@ camera.position.setZ(30);
 
 renderer.render(scene, camera);
 
-const loader = new OBJLoader();
+// const loader = new OBJLoader();
