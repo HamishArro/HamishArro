@@ -22,22 +22,3 @@ camera.position.setZ(30);
 camera.position.setX(-3);
 
 renderer.render(scene, camera);
-
-function addMesh(mesh) {
-  scene.add(mesh);
-  console.log(mesh.getWorldPosition());
-}
-
-function loadMesh(name, callback) {
-  var mtlLoader = new MTLLoader();
-  mtlLoader.setPath("./models/eyeball/");
-  mtlLoader.load("eyeball.mtl", function (materials) {
-    materials.preload();
-    const objLoader = new OBJLoader();
-    objLoader.setMaterials(materials);
-    objLoader.setPath("./models/eyeball/");
-    objLoader.load("eyeball.obj", function (object) {
-      scene.add(object);
-    });
-  });
-}
