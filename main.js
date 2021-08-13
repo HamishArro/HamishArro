@@ -1,5 +1,4 @@
 import "./style.css";
-
 import * as THREE from "three";
 
 const scene = new THREE.Scene();
@@ -18,7 +17,6 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
+camera.position.setX(-3);
 
 renderer.render(scene, camera);
-
-// const loader = new OBJLoader();
