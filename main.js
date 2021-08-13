@@ -23,6 +23,11 @@ camera.position.setX(-3);
 
 renderer.render(scene, camera);
 
+function addMesh(mesh) {
+  scene.add(mesh);
+  console.log(mesh.getWorldPosition());
+}
+
 function loadMesh(name, callback) {
   var mtlLoader = new MTLLoader();
   mtlLoader.setPath("./models/eyeball/");
