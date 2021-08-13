@@ -1,6 +1,7 @@
 import "./style.css";
 import * as THREE from "three";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
+import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader.js";
 
 const scene = new THREE.Scene();
 
@@ -22,4 +23,5 @@ camera.position.setX(-3);
 
 renderer.render(scene, camera);
 
-const loader = new OBJLoader();
+const objLoader = new OBJLoader();
+const mtlLoader = new MTLLoader();
