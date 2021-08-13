@@ -1,7 +1,7 @@
 import "./style.css";
 import * as THREE from "three";
-import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
-import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 const scene = new THREE.Scene();
 
@@ -18,7 +18,26 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
-camera.position.setX(-3);
+camera.position.setZ(0);
+camera.position.setX(0);
 
 renderer.render(scene, camera);
+
+// const geometry = new THREE.BoxGeometry(1, 1, 1);
+// const material = new THREE.MeshBasicMaterial({ color: "red" });
+// const boxMesh = new THREE.Mesh(geometry, material);
+//
+// scene.add(boxMesh);
+
+// const loader = new GLTFLoader();
+// const dracoLoader = new DRACOLoader();
+// dracoLoader.setDecoderPath("/examples/js/libs/draco/");
+// loader.setDRACOLoader(dracoLoader);
+// loader.load("models/eye/scene.gltf", function (gltf) {
+//   scene.add(gltf.scene);
+//   gltf.animations; // Array<THREE.AnimationClip>
+//   gltf.scene; // THREE.Group
+//   gltf.scenes; // Array<THREE.Group>
+//   gltf.cameras; // Array<THREE.Camera>
+//   gltf.asset; // Object
+// });
