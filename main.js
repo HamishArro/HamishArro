@@ -1,5 +1,6 @@
 import "./style.css";
 import * as THREE from "three";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
 
 const scene = new THREE.Scene();
 
@@ -20,3 +21,5 @@ camera.position.setZ(30);
 camera.position.setX(-3);
 
 renderer.render(scene, camera);
+
+const loader = new OBJLoader();
