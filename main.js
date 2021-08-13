@@ -23,5 +23,16 @@ camera.position.setX(-3);
 
 renderer.render(scene, camera);
 
-const objLoader = new OBJLoader();
-const mtlLoader = new MTLLoader();
+function loadMesh(name, callback) {
+  var mtlLoader = new MTLLoader();
+  mtlLoader.setPath("./models/eyeball/");
+  mtlLoader.load("eyeball.mtl", function (materials) {
+    materials.preload();
+    const objLoader = new OBJLoader();
+    objLoader.setMaterials(materials);
+    objLoader.setPath("./models/eyeball/");
+    objLoader.load("eyeball.obj", function (object) {
+      scene.add(object);
+    });
+  });
+}
