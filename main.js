@@ -30,7 +30,10 @@ scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(5, 5, 5);
-scene.add(pointLight);
+
+const ambientLight = new THREE.AmbientLight(0xffffff);
+
+scene.add(pointLight, ambientLight);
 
 function animate() {
   requestAnimationFrame(animate);
