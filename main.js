@@ -1,5 +1,8 @@
 import "./style.css";
+
 import * as THREE from "three";
+
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
@@ -28,16 +31,29 @@ const torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
 
+const loader = new GLTFLoader();
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath("/examples/js/libs/draco/");
+loader.setDRACOLoader(dracoLoader);
+loader.load("models/eye/scene.gltf", function (gltf) {
+  scene.add(gltf.scene);
+  gltf.animations; // Array<THREE.AnimationClip>
+  gltf.scene; // THREE.Group
+  gltf.scenes; // Array<THREE.Group>
+  gltf.cameras; // Array<THREE.Camera>
+  gltf.asset; // Object
+});
+
 const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(5, 5, 5);
-
+pointLight.position.set(0, 0, 5);
 const ambientLight = new THREE.AmbientLight(0xffffff);
-
 scene.add(pointLight, ambientLight);
 
-const lightHelper = new THREE.PointLightHelper(pointLight);
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(lightHelper, gridHelper);
+// const lightHelper = new THREE.PointLightHelper(pointLight);
+// const gridHelper = new THREE.GridHelper(200, 50);
+// scene.add(lightHelper, gridHelper);
+
+const controls = new OrbitControls(camera, renderer.domElement);
 
 function animate() {
   requestAnimationFrame(animate);
@@ -46,26 +62,9 @@ function animate() {
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
 
+  controls.update();
+
   renderer.render(scene, camera);
 }
 
 animate();
-
-// const geometry = new THREE.BoxGeometry(1, 1, 1);
-// const material = new THREE.MeshBasicMaterial({ color: "red" });
-// const boxMesh = new THREE.Mesh(geometry, material);
-//
-// scene.add(boxMesh);
-
-// const loader = new GLTFLoader();
-// const dracoLoader = new DRACOLoader();
-// dracoLoader.setDecoderPath("/examples/js/libs/draco/");
-// loader.setDRACOLoader(dracoLoader);
-// loader.load("models/eye/scene.gltf", function (gltf) {
-//   scene.add(gltf.scene);
-//   gltf.animations; // Array<THREE.AnimationClip>
-//   gltf.scene; // THREE.Group
-//   gltf.scenes; // Array<THREE.Group>
-//   gltf.cameras; // Array<THREE.Camera>
-//   gltf.asset; // Object
-// });
