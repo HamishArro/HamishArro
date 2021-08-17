@@ -6,6 +6,9 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
+import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader.js";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
+
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -31,18 +34,25 @@ const torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
 
-const loader = new GLTFLoader();
-const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath("/examples/js/libs/draco/");
-loader.setDRACOLoader(dracoLoader);
-loader.load("models/eye/scene.gltf", function (gltf) {
-  scene.add(gltf.scene);
-  gltf.animations; // Array<THREE.AnimationClip>
-  gltf.scene; // THREE.Group
-  gltf.scenes; // Array<THREE.Group>
-  gltf.cameras; // Array<THREE.Camera>
-  gltf.asset; // Object
-});
+function loadModel(url) {
+  const objloader = new OBJLoader();
+  const mtlLoader = new MTLLoader();
+  mtlLoader.load("models/eyeball/eyeball.mtl", (materials) => {
+    materials.preload();
+    objloader.setMaterials(materials);
+    objloader.load("models/eyeball/eyeball.obj", function (object) {
+      scene.add(object);
+    });
+  });
+}
+
+// const loader = new GLTFLoader();
+// const dracoLoader = new DRACOLoader();
+// dracoLoader.setDecoderPath("/examples/js/libs/draco/");
+// loader.setDRACOLoader(dracoLoader);
+// loader.load("models/eye/scene.gltf", function (gltf) {
+//   return gltf.scene;
+// });
 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(0, 0, 5);
