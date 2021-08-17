@@ -35,11 +35,17 @@ renderer.render(scene, camera);
 // scene.add(torus);
 
 async function loadModel(url) {
-  const objloader = new OBJLoader();
-  return objloader.loadAsync(`${url}.obj`, function (object) {
+  const objLoader = new OBJLoader();
+  var materials = await mtlLoader.loadAsync(`${url}.mtl`, function (object) {
+    return object;
+  });
+  objLoader.setMaterials(materials);
+  return objLoader.loadAsync(`${url}.obj`, function (object) {
     return object;
   });
 }
+
+const mtlLoader = new MTLLoader();
 
 const eyeball = await loadModel("models/eyeball/eyeball");
 
