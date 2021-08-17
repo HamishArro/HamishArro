@@ -3,8 +3,8 @@ import "./style.css";
 import * as THREE from "three";
 
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+// import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader.js";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
@@ -28,23 +28,22 @@ camera.position.setZ(30);
 
 renderer.render(scene, camera);
 
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({ color: "red" });
-const torus = new THREE.Mesh(geometry, material);
+// const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+// const material = new THREE.MeshStandardMaterial({ color: "red" });
+// const torus = new THREE.Mesh(geometry, material);
+//
+// scene.add(torus);
 
-scene.add(torus);
-
-function loadModel(url) {
+async function loadModel(url) {
   const objloader = new OBJLoader();
-  const mtlLoader = new MTLLoader();
-  mtlLoader.load("models/eyeball/eyeball.mtl", (materials) => {
-    materials.preload();
-    objloader.setMaterials(materials);
-    objloader.load("models/eyeball/eyeball.obj", function (object) {
-      scene.add(object);
-    });
+  return objloader.loadAsync(`${url}.obj`, function (object) {
+    return object;
   });
 }
+
+const eyeball = await loadModel("models/eyeball/eyeball");
+
+scene.add(eyeball);
 
 // const loader = new GLTFLoader();
 // const dracoLoader = new DRACOLoader();
@@ -68,9 +67,9 @@ const controls = new OrbitControls(camera, renderer.domElement);
 function animate() {
   requestAnimationFrame(animate);
 
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.005;
-  torus.rotation.z += 0.01;
+  eyeball.rotation.x += 0.01;
+  eyeball.rotation.y += 0.005;
+  eyeball.rotation.z += 0.01;
 
   controls.update();
 
