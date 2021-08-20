@@ -40,16 +40,12 @@ scene.add(eyeball);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(ambientLight);
 
-const controls = new OrbitControls(camera, renderer.domElement);
-
 function animate() {
   requestAnimationFrame(animate);
 
   eyeball.rotation.x += 0.01;
   eyeball.rotation.y += 0.01;
   eyeball.rotation.z += 0.01;
-
-  controls.update();
 
   renderer.render(scene, camera);
 }
