@@ -39,13 +39,37 @@ const eyeball = await loadModel("models/eyeball/eyeball");
 scene.add(eyeball);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(ambientLight);
+var plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -10);
+var raycaster = new THREE.Raycaster();
+var mouse = new THREE.Vector2();
+var pointOfIntersection = new THREE.Vector3();
+canvas.addEventListener("mousemove", onMouseMove, false);
+
+function onMouseMove(event) {
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  raycaster.ray.intersectPlane(plane, pointOfIntersection);
+  eyeball.lookAt(pointOfIntersection);
+}
+
+function resize(renderer) {
+  const canvas = renderer.domElement;
+  const width = canvas.clientWidth;
+  const height = canvas.clientHeight;
+  const needResize = canvas.width !== width || canvas.height !== height;
+  if (needResize) {
+    renderer.setSize(width, height, false);
+  }
+  return needResize;
+}
 
 function animate() {
   requestAnimationFrame(animate);
-
-  eyeball.rotation.x += 0.01;
-  eyeball.rotation.y += 0.01;
-  eyeball.rotation.z += 0.01;
+  if (resize(renderer)) {
+    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+    camera.updateProjectionMatrix();
+  }
 
   renderer.render(scene, camera);
 }
