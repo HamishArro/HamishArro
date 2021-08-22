@@ -36,7 +36,6 @@ async function loadModel(url) {
 
 const eyeball = await loadModel("models/eyeball/eyeball");
 scene.add(eyeball);
-
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(ambientLight);
 
