@@ -47,13 +47,11 @@ var pointOfIntersection = new THREE.Vector3();
 canvas.addEventListener("mousemove", onMouseMove, false);
 renderer.domElement.addEventListener("click", onclick, true);
 
-var selectedObject;
-var raycaster = new THREE.Raycaster();
-
 function onclick(event) {
   raycaster.setFromCamera(mouse, camera);
   const intersects = raycaster.intersectObjects(scene.children, true);
   if (intersects.length > 0) {
+    alert("Why would you do that?");
   }
 }
 
