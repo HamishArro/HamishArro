@@ -2,7 +2,13 @@ import { Canvas } from "@react-three/fiber";
 import "./App.css";
 
 const Scene = () => {
-  return <Canvas></Canvas>;
+  return (
+    <Canvas>
+      <mesh>
+        <planeBufferGeometry args={[3, 5]} />
+      </mesh>
+    </Canvas>
+  );
 };
 
 const App = () => {
