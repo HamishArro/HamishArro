@@ -36,6 +36,7 @@ async function loadModel(url) {
 }
 
 const eyeball = await loadModel("models/eyeball/eyeball");
+eyeball.scale.set(2, 2, 2);
 scene.add(eyeball);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(ambientLight);
@@ -51,7 +52,6 @@ function onclick(event) {
   raycaster.setFromCamera(mouse, camera);
   const intersects = raycaster.intersectObjects(scene.children, true);
   if (intersects.length > 0) {
-    alert("Why would you do that?");
   }
 }
 
