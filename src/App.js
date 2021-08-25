@@ -1,20 +1,15 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import React, { useRef, useState } from "react";
-import { useGLTF } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import React from "react";
 import Eyeball from "./Components/Eyeball";
 import "./App.css";
 
-const Scene = () => {
+const App = () => {
   return (
     <Canvas>
       <ambientLight />
       <Eyeball position={(0, 0, 0)} />
     </Canvas>
   );
-};
-
-const App = () => {
-  return <Scene />;
 };
 
 export default App;
