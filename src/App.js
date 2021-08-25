@@ -7,7 +7,7 @@ const App = () => {
   return (
     <Canvas>
       <ambientLight />
-      <Eyeball position={(0, 0, 0)} />
+      <Eyeball />
     </Canvas>
   );
 };
