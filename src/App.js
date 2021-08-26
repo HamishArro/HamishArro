@@ -1,20 +1,15 @@
 import { Canvas } from "@react-three/fiber";
-import {
-  Environment,
-  OrbitControls,
-  Html,
-  useProgress,
-} from "@react-three/drei";
+import { OrbitControls, Html, useProgress } from "@react-three/drei";
 import { Suspense } from "react";
-import Knife from "./components/Knife";
+import Eye from "./components/Eye";
 import "./App.css";
 
 export default function App() {
   return (
     <Canvas>
       <ambientLight />
-      <Suspense fallback={<Loader />}>
-        <Knife />
+      <Suspense fallback={null}>
+        <Eye />
         <OrbitControls />
       </Suspense>
     </Canvas>
