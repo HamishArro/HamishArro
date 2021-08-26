@@ -9,7 +9,7 @@ export default function App() {
     <Canvas>
       <ambientLight />
       <Suspense fallback={null}>
-        <Eye />
+        <Eye scale={100} />
         <OrbitControls />
       </Suspense>
     </Canvas>
