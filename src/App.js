@@ -1,7 +1,12 @@
-import { Canvas, useLoader } from "@react-three/fiber";
-import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
-import { Html, useProgress } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import {
+  Environment,
+  OrbitControls,
+  Html,
+  useProgress,
+} from "@react-three/drei";
 import { Suspense } from "react";
+import Knife from "./components/Knife";
 import "./App.css";
 
 export default function App() {
@@ -9,7 +14,8 @@ export default function App() {
     <Canvas>
       <ambientLight />
       <Suspense fallback={<Loader />}>
-        <Eyeball />
+        <Knife />
+        <OrbitControls />
       </Suspense>
     </Canvas>
   );
@@ -17,5 +23,5 @@ export default function App() {
 
 function Loader() {
   const { progress } = useProgress();
-  return <Html center>{progress} % loaded</Html>;
+  return <Html center>{progress} %</Html>;
 }
