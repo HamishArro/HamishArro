@@ -8,21 +8,7 @@ import { random } from "lodash";
 
 export default function Eye(props) {
   const group = useRef();
-  const time = useRef(0);
-  const [isActive, setIsActive] = useState(false);
-  const isActiveRef = useRef(isActive);
-  const position = useMemo(() => {
-    return [random(-5, 5, true), random(-5, 5, true), random(-5, 5, true)];
-  }, []);
-  const timeMod = useMemo(() => random(0.1, 4, true), []);
   const { nodes, materials } = useGLTF("/eye/eye.glb");
-  useFrame(({}) => {
-    group.current.rotation.y += 0.02 * timeMod;
-    if (isActiveRef.current) {
-      time.current += 0.03;
-      group.current.position.y = position[1] + Math.sin(time.current) * 0.4;
-    }
-  });
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh

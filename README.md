@@ -68,3 +68,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+const time = useRef(0);
+const [isActive, setIsActive] = useState(false);
+const isActiveRef = useRef(isActive);
+const position = useMemo(() => {
+return [random(-5, 5, true), random(-5, 5, true), random(-5, 5, true)];
+}, []);
+const timeMod = useMemo(() => random(0.1, 4, true), []);
+useFrame(({}) => {
+group.current.rotation.y += 0.02 _ timeMod;
+if (isActiveRef.current) {
+time.current += 0.03;
+group.current.position.y = position[1] + Math.sin(time.current) _ 0.4;
+}
+});
