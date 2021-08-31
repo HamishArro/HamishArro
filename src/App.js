@@ -5,14 +5,15 @@ import Eye from "./components/Eye";
 import "./App.css";
 
 export default function App() {
-  const handleMouseMove = (event) => {
-    event.preventDefault();
-    console.log("moved");
-  };
-
   useEffect(() => {
-    console.log("hello");
+    addRaycaster();
   });
+
+  const addRaycaster = () => {
+    console.log(
+      "need to create an error handler that waits for object to be loaded"
+    );
+  };
 
   return (
     <div id="canvasContainer">
