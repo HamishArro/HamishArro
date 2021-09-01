@@ -38,6 +38,7 @@ function Scene() {
     requestAnimationFrame(animate);
     raycaster.setFromCamera(mouse, camera);
     raycaster.ray.intersectPlane(plane, pointOfIntersection);
+    eye.current.lookAt(pointOfIntersection);
   };
 
   return (
