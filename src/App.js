@@ -1,26 +1,27 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import Eye from "./components/Eye";
 import "./App.css";
 
 export default function App() {
+  const eye = useRef();
+
   useEffect(() => {
     addRaycaster();
+    console.log(eye);
   });
 
-  const addRaycaster = () => {
-    console.log(
-      "need to create an error handler that waits for object to be loaded"
-    );
-  };
+  const addRaycaster = () => {};
 
   return (
-    <div id="canvasContainer">
-      <Canvas id="canvas">
+    <div>
+      <Canvas>
         <Suspense fallback={null}>
           <ambientLight />
-          <Eye scale={100} />
+          <mesh ref={eye}>
+            <Eye scale={100} />
+          </mesh>
           <OrbitControls />
         </Suspense>
       </Canvas>
