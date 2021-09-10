@@ -19,21 +19,16 @@ export default function Eye(props) {
 
   const animate = () => {
     var eye = group.current.children[0];
-    console.log(raycaster);
     raycaster.setFromCamera(props.coords, camera);
-    console.log(raycaster);
-    console.log(props.coords);
-    console.log(pointOfIntersection);
-    console.log(plane);
     raycaster.ray.intersectPlane(plane, pointOfIntersection);
-    console.log(pointOfIntersection);
-    eye.lookAt(new THREE.Vector3(1, 1, 1));
+    eye.lookAt(pointOfIntersection);
   };
 
   const { nodes, materials } = useGLTF("/eye/eye.glb");
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh
+        scale={80}
         geometry={nodes.eye_low001.geometry}
         material={materials.Eye_material}
       />

@@ -18,7 +18,7 @@ export default function App() {
         <Suspense fallback={null}>
           <ambientLight />
           <mesh>
-            <Eye coords={mouse} scale={100} />
+            <Eye coords={mouse} />
           </mesh>
         </Suspense>
       </Canvas>
