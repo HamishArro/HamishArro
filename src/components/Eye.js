@@ -20,10 +20,9 @@ export default function Eye(props) {
 
   const animate = () => {
     requestAnimationFrame(animate);
-    var eye = group.current.children[0];
     raycaster.setFromCamera(props.coords, camera);
     raycaster.ray.intersectPlane(plane, pointOfIntersection);
-    eye.lookAt(pointOfIntersection);
+    group.current.children[0].lookAt(pointOfIntersection);
   };
 
   const { nodes, materials } = useGLTF("/eye/eye.glb");
