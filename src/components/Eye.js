@@ -25,7 +25,7 @@ export default function Eye(props) {
     group.current.children[0].lookAt(pointOfIntersection);
   };
 
-  const { nodes, materials } = useGLTF("/eye/eye.glb");
+  const { nodes, materials } = useGLTF("/eye.glb");
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh
@@ -37,4 +37,4 @@ export default function Eye(props) {
   );
 }
 
-useGLTF.preload("eye/eye.glb");
+useGLTF.preload("/eye.glb");
