@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import Eye from "./components/Eye";
 import "./App.css";
@@ -35,7 +36,10 @@ export default function App() {
         <Route path="/cOne">
           <div>
             <Canvas>
-              <ambientLight />
+              <Suspense fallback={null}>
+                <ambientLight />
+                <OrbitControls />
+              </Suspense>
             </Canvas>
           </div>
         </Route>
