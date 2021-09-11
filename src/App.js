@@ -32,7 +32,13 @@ export default function App() {
             </Canvas>
           </div>
         </Route>
-        <Route path="/cOne"></Route>
+        <Route path="/cOne">
+          <div>
+            <Canvas>
+              <ambientLight />
+            </Canvas>
+          </div>
+        </Route>
       </Switch>
     </Router>
   );
