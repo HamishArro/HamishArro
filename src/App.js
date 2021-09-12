@@ -4,13 +4,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import Eye from "./components/Eye";
+import Game from "./Game";
 import "./App.css";
 
 export default function App() {
   const mouse = new THREE.Vector2();
 
   const eyeClick = () => {
-    document.location.href = "/cOne/";
+    document.location.href = "/game/";
   };
 
   const handleMove = (event) => {
@@ -33,15 +34,8 @@ export default function App() {
             </Canvas>
           </div>
         </Route>
-        <Route path="/cOne">
-          <div>
-            <Canvas>
-              <Suspense fallback={null}>
-                <ambientLight />
-                <OrbitControls />
-              </Suspense>
-            </Canvas>
-          </div>
+        <Route path="/game">
+          <Game />
         </Route>
       </Switch>
     </Router>
