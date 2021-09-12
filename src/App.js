@@ -1,7 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import Eye from "./components/Eye";
 import Game from "./Game";
