@@ -7,7 +7,7 @@ export default function Game() {
   };
 
   useEffect(() => {
-    var p = document.getElementById("p");
+    var p = document.getElementsByTagName("P")[0];
     p.innerHTML = "Why did you poke my eye?";
     setTimeout(function () {
       p.innerHTML = "Oh but why would you poke my eye?";
@@ -23,7 +23,7 @@ export default function Game() {
 
   return (
     <div>
-      <p id={"p"}></p>
+      <p></p>
     </div>
   );
 }
