@@ -11,3 +11,6 @@ div {
   height: 100%;
   background-color: black;
 }
+* {
+  cursor: none;
+}

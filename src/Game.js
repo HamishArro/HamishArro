@@ -2,11 +2,7 @@ import React, { useEffect } from "react";
 import "./Game.css";
 
 export default function Game() {
-  const createGame = () => {
-    // createGame
-  };
-
-  useEffect(() => {
+  const startSequence = () => {
     var p = document.getElementsByTagName("P")[0];
     p.innerHTML = "Why did you poke my eye?";
     setTimeout(function () {
@@ -19,6 +15,14 @@ export default function Game() {
         }, 2000);
       }, 2000);
     }, 2000);
+  };
+
+  const createGame = () => {
+    // createGame
+  };
+
+  useEffect(() => {
+    startSequence();
   });
 
   return (
