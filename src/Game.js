@@ -7,14 +7,14 @@ export default function Game() {
   };
 
   useEffect(() => {
-    var page = document.getElementById("p");
-    page.innerHTML = "Why did you poke my eye?";
+    var p = document.getElementById("p");
+    p.innerHTML = "Why did you poke my eye?";
     setTimeout(function () {
-      page.innerHTML = "Oh but why would you poke my eye?";
+      p.innerHTML = "Oh but why would you poke my eye?";
       setTimeout(function () {
-        page.innerHTML = "Now I shall cry, and release my evil eye.";
+        p.innerHTML = "Now I shall cry, and release my evil eye.";
         setTimeout(function () {
-          page.remove();
+          p.remove();
           createGame();
         }, 2000);
       }, 2000);
