@@ -1,30 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import * as THREE from "three";
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
-import Eye from "./components/Eye";
+import React from 'react';
+import EyeScene from './components/EyeScene';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
 
 function App() {
-  const mouse = new THREE.Vector2();
-
-  const handleMove = (event: React.MouseEvent) => {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-  };
 
   return (
-    <div onMouseMove={handleMove}>
-      <Canvas>
-        <Suspense fallback={null}>
-          <ambientLight />
-          <mesh>
-            <Eye coords={mouse} />
-          </mesh>
-        </Suspense>
-      </Canvas>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<EyeScene />}/>
+        <Route path="/cOne"/> 
+      </Routes>
+    </BrowserRouter>
   );
 }
 
