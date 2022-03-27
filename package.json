@@ -23,6 +23,10 @@
     "typescript": "^4.6.3",
     "web-vitals": "^2.1.4"
   },
+  "engines": {
+    "node": "17.8.0",
+    "yarn": "1.22.18"
+  },
   "scripts": {
     "lint": "eslint . --ext .ts",
     "start": "react-scripts start",
