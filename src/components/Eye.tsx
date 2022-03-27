@@ -7,9 +7,9 @@ function Eye(props: { coords: THREE.Vector2 }) {
     const eye = useRef<THREE.Object3D>()
     const { camera } = useThree()
     const { nodes, materials } = useGLTF('/eye.glb')
-    var raycaster = new THREE.Raycaster()
-    var plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -10)
-    var pointOfIntersection = new THREE.Vector3()
+    const raycaster = new THREE.Raycaster()
+    const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -10)
+    const pointOfIntersection = new THREE.Vector3()
     camera.position.z = 30
 
     useEffect(() => {
@@ -24,14 +24,12 @@ function Eye(props: { coords: THREE.Vector2 }) {
     }
 
     return (
-        <group dispose={null}>
-            <primitive
-                ref={eye}
-                scale={200}
-                object={nodes.eye_low001}
-                material={materials.Eye_material}
-            />
-        </group>
+        <primitive
+            ref={eye}
+            scale={200}
+            object={nodes.eye_low001}
+            material={materials.Eye_material}
+        />
     )
 }
 
