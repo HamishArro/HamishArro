@@ -10,26 +10,34 @@ function Eye(props: { coords: THREE.Vector2 }) {
     const raycaster = new THREE.Raycaster()
     const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -10)
     const pointOfIntersection = new THREE.Vector3()
+    let weight = 0
     camera.position.z = 30
 
     useEffect(() => {
         animate()
     })
 
+    const handleClick = () => {
+        weight += 5
+    }
+
     const animate = () => {
         requestAnimationFrame(animate)
         raycaster.setFromCamera(props.coords, camera)
         raycaster.ray.intersectPlane(plane, pointOfIntersection)
         eye.current?.lookAt(pointOfIntersection)
+        eye.current?.scale.set(200 + weight, 200 + weight, 200 + weight)
     }
 
     return (
-        <primitive
-            ref={eye}
-            scale={200}
-            object={nodes.eye_low001}
-            material={materials.Eye_material}
-        />
+        <mesh onClick={handleClick}>
+            <primitive
+                ref={eye}
+                scale={200}
+                object={nodes.eye_low001}
+                material={materials.Eye_material}
+            />
+        </mesh>
     )
 }
 

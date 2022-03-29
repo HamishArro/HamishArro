@@ -8,7 +8,6 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<EyeScene />} />
-                <Route path="/cOne" />
             </Routes>
         </BrowserRouter>
     )

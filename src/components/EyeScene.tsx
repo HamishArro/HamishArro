@@ -7,10 +7,6 @@ import Eye from './Eye'
 function EyeScene() {
     const mouse = new THREE.Vector2()
 
-    const eyeClick = () => {
-        document.location.href = '/cOne/'
-    }
-
     const handleMove = (event: React.MouseEvent) => {
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
@@ -21,9 +17,7 @@ function EyeScene() {
             <Canvas>
                 <Suspense fallback={null}>
                     <ambientLight />
-                    <mesh onClick={eyeClick}>
-                        <Eye coords={mouse} />
-                    </mesh>
+                    <Eye coords={mouse} />
                 </Suspense>
             </Canvas>
         </div>
