@@ -19,6 +19,7 @@ function Eye(props: { coords: THREE.Vector2 }) {
 
     const handleClick = () => {
         weight += 5
+        eye.current?.scale.set(200 + weight, 200 + weight, 200 + weight)
     }
 
     const animate = () => {
@@ -26,7 +27,6 @@ function Eye(props: { coords: THREE.Vector2 }) {
         raycaster.setFromCamera(props.coords, camera)
         raycaster.ray.intersectPlane(plane, pointOfIntersection)
         eye.current?.lookAt(pointOfIntersection)
-        eye.current?.scale.set(200 + weight, 200 + weight, 200 + weight)
     }
 
     return (
