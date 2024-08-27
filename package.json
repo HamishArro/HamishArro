@@ -14,8 +14,9 @@
     "@types/react-dom": "^17.0.14",
     "@types/react-router-dom": "^5.3.3",
     "@types/three": "^0.138.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "next": "^14.2.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "three": "^0.139.0",
@@ -23,15 +24,14 @@
     "web-vitals": "^2.1.4"
   },
   "engines": {
-    "node": "17.8.0",
+    "node": "20.17.0",
     "yarn": "1.22.18"
   },
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve@latest ./build"
   },
   "eslintConfig": {
     "extends": [
