@@ -6,7 +6,8 @@ import * as THREE from 'three'
 function Eye(props: { coords: THREE.Vector2 }) {
     const eye = useRef<THREE.Object3D>()
     const { camera } = useThree()
-    const { nodes, materials } = useGLTF('/eye.glb')
+    const gltf = useGLTF('/eye.glb')
+
     const raycaster = new THREE.Raycaster()
     const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -10)
     const pointOfIntersection = new THREE.Vector3()
@@ -31,12 +32,7 @@ function Eye(props: { coords: THREE.Vector2 }) {
 
     return (
         <mesh onClick={handleClick}>
-            <primitive
-                ref={eye}
-                scale={200}
-                object={nodes.eye_low001}
-                material={materials.Eye_material}
-            />
+            <primitive ref={eye} scale={200} object={gltf.scene} />
         </mesh>
     )
 }
